@@ -1,4 +1,3 @@
-import { toast } from '@/hooks/use-toast';
 import { create } from 'zustand';
 
 interface AuthState {
@@ -11,19 +10,23 @@ export const useAuthStore = create<AuthState>((set) => ({
   isAuthenticated: false,
   login: async (email: string, password: string) => {
     try {
-//    TODO update this with backend logic later
-    if (
-        email === 'test@example.com' && 
-        password === 'password123'
-    ) {
-        set({ isAuthenticated: true });
-    }
-    return true;
+        // TODO look into env variables when cleaning up
+      const response = await fetch('http://localhost:3001/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
+      if (response.ok) {
+        set({ isAuthenticated: true });
+        return true;
+      }
+      return false;
     } catch (error) {
-    console.error('Login failed:', error);
-    toast({ title: "Error not authorized", variant: 'destructive' });
-    return false;
+      console.error('Login failed:', error);
+      return false;
     }
   },
   logout: () => set({ isAuthenticated: false }),
