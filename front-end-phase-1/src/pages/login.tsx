@@ -31,11 +31,8 @@ const {
   });
 
   const onSubmit = async (data: LoginFormData) => {
-     
-        await login(data.email, data.password);
-        toast({ title: "Logged in", variant: 'default' });
-      navigate('/main');
-    
+    await login(data.email, data.password);
+    navigate('/main');
   };
 
 
