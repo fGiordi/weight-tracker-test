@@ -63,11 +63,13 @@ app.put('/weights/:id', (req, res) => {
         const { id } = req.params;
         const { value } = req.body;
 
+        const numericId = parseInt(id);
+
         if (typeof value !== 'number' || value <= 0) {
             return res.status(400).json({ error: 'Invalid weight value. It must be a positive number.' });
         }
 
-        const weight = db.weights.update(id, { value });
+        const weight = db.weights.update(numericId, { value });
         if (!weight) {
             return res.status(404).json({ error: 'Weight not found.' });
         }
@@ -82,7 +84,8 @@ app.put('/weights/:id', (req, res) => {
 app.delete('/weights/:id', (req, res) => {
     try {
       const { id } = req.params;
-      const success = db.weights.delete(id);
+      const numericId = parseInt(id);
+      const success = db.weights.delete(numericId);
       
       if (!success) {
         return res.status(404).json({ error: 'Weight not found' });
