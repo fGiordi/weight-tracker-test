@@ -6,9 +6,9 @@ type Weight = {
   
 //   In memory DB using Map
   let weights = new Map<string, Weight>([
-    ['1', { id: '1', value: 70.5, date: new Date('2024-03-20') }],
-    ['2', { id: '2', value: 71.2, date: new Date('2024-03-21') }],
-    ['3', { id: '3', value: 70.8, date: new Date('2024-03-22') }],
+    ['1', { id: crypto.randomUUID(), value: 70.5, date: new Date('2024-03-20') }],
+    ['2', { id: crypto.randomUUID(), value: 71.2, date: new Date('2024-03-21') }],
+    ['3', { id: crypto.randomUUID(), value: 70.8, date: new Date('2024-03-22') }],
   ]);
   
   export const db = {
