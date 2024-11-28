@@ -16,7 +16,6 @@ export function AddWeight() {
     
       addWeight(weightValue);
       setWeight('');
-      toast({title: 'Weight added'})
   };
 
   return (
