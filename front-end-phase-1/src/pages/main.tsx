@@ -1,10 +1,10 @@
 import { useState } from 'react';
+import { LogOut, Plus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '@/store/useAuthStore';
 import { AddWeight } from '@/components/custom/AddWeight';
 import { WeightList } from '@/components/custom/WeightList';
 import { Button } from '@/components/ui/button';
-import { LogOut, Plus } from 'lucide-react';
 
 export function Main() {
   const [showAddWeight, setShowAddWeight] = useState(false);
