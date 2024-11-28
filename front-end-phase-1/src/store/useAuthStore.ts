@@ -1,4 +1,5 @@
 import { baseURL } from '@/config/apiConfig';
+import { toast } from '@/hooks/use-toast';
 import { create } from 'zustand';
 
 interface AuthState {
@@ -21,11 +22,13 @@ export const useAuthStore = create<AuthState>((set) => ({
 
       if (response.ok) {
         set({ isAuthenticated: true });
+        toast({ title: "Logged in", variant: 'success' });
         return true;
       }
       return false;
     } catch (error) {
       console.error('Login failed:', error);
+      toast({ title: "Unable to login", variant: 'destructive' });
       return false;
     }
   },
