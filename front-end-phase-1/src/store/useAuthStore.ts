@@ -1,3 +1,4 @@
+import { baseURL } from '@/config/apiConfig';
 import { create } from 'zustand';
 
 interface AuthState {
@@ -10,8 +11,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   isAuthenticated: false,
   login: async (email: string, password: string) => {
     try {
-        // TODO look into env variables when cleaning up
-      const response = await fetch('http://localhost:3001/login', {
+      const response = await fetch(`${baseURL}login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
