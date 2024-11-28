@@ -61,13 +61,14 @@ app.post('/weights', (req, res) => {
 app.put('/weights/:id', (req, res) => {
     try {
         const { id } = req.params;
-        const { value } = req.body;
+        let { value } = req.body;
+        value = parseFloat(value);
 
         const numericId = parseInt(id);
 
-        if (typeof value !== 'number' || value <= 0) {
-            return res.status(400).json({ error: 'Invalid weight value. It must be a positive number.' });
-        }
+        if (isNaN(value) || value < 0 ) {
+            return res.status(400).json({ error: 'Invalid weight value. It must be a number.' });
+          }
 
         const weight = db.weights.update(numericId, { value });
         if (!weight) {
