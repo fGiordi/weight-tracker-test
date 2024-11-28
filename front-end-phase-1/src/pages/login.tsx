@@ -7,7 +7,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Scale } from 'lucide-react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { toast } from '@/hooks/use-toast';
 
 // Zod schema for form validation
 const loginSchema = z.object({
