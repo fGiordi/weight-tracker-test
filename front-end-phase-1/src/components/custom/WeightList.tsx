@@ -21,6 +21,7 @@ import {
   } from "@/components/ui/alert-dialog"
 import { Button } from '../ui/button';
 import { Trash2 } from 'lucide-react';
+import { EditWeight } from './EditWeight';
 
 export function WeightList() {
   const { weights, fetchWeights, deleteWeight, isLoading } = useWeightStore();
@@ -57,6 +58,7 @@ export function WeightList() {
             </TableCell>
             <TableCell className="text-left">{weight.value.toFixed(1)}</TableCell>
             <TableCell className="text-right space-x-2">
+              <EditWeight weight={weight} />  
               <AlertDialog>
                 <AlertDialogTrigger asChild>
                   <Button variant="ghost" size="icon">
