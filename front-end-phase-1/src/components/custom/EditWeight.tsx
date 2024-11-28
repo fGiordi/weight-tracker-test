@@ -19,7 +19,6 @@ export function EditWeight({ weight }: EditWeightProps) {
   const [open, setOpen] = useState(false);
   const updateWeight = useWeightStore((state) => state.updateWeight);
 
-  // React Hook Form setup
   const {
     register,
     handleSubmit,
@@ -30,8 +29,8 @@ export function EditWeight({ weight }: EditWeightProps) {
 
   const onSubmit = async (data: FormValues) => {
     try {
-      await updateWeight(weight.id, data.value); // Calls the store function to update weight
-      setOpen(false); // Close the dialog after successful update
+      await updateWeight(weight.id, data.value); 
+      setOpen(false); 
     } catch (error) {
       // Error handling is already inside the store's updateWeight function
       console.error("Error updating weight:", error);
