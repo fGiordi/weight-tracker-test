@@ -56,7 +56,7 @@ export function WeightList() {
             <TableCell className="text-left">
               <strong className="text-left">{new Date(weight.date).toLocaleDateString()}</strong>
             </TableCell>
-            <TableCell className="text-left">{weight.value.toFixed(1)}</TableCell>
+            <TableCell className="text-left">{Number(weight.value).toFixed(1)}</TableCell>
             <TableCell className="text-right space-x-2">
               <EditWeight weight={weight} />  
               <AlertDialog>
